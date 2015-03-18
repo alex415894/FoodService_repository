@@ -31,5 +31,7 @@ namespace FoodService.Models
         }
 
         public System.Data.Entity.DbSet<FoodService.Models.Dish> Dishes { get; set; }
+
+        public System.Data.Entity.DbSet<FoodService.Models.MenuItem> MenuItems { get; set; }
     }
 }
