@@ -12,44 +12,44 @@ using FoodService.Models;
 
 namespace FoodService.Controllers.api
 {
-    public class MenuItemsController : ApiController
+    public class OrderItemsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/MenuItems
-        public IQueryable<MenuItem> GetMenuItems()
+        // GET: api/OrderItems
+        public IQueryable<OrderItem> GetOrdersItems()
         {
-            return db.MenuItems;
+            return db.OrdersItems;
         }
 
-        // GET: api/MenuItems/5
-        [ResponseType(typeof(MenuItem))]
-        public IHttpActionResult GetMenuItem(int id)
+        // GET: api/OrderItems/5
+        [ResponseType(typeof(OrderItem))]
+        public IHttpActionResult GetOrderItem(int id)
         {
-            MenuItem menuItem = db.MenuItems.Find(id);
-            if (menuItem == null)
+            OrderItem orderItem = db.OrdersItems.Find(id);
+            if (orderItem == null)
             {
                 return NotFound();
             }
 
-            return Ok(menuItem);
+            return Ok(orderItem);
         }
 
-        // PUT: api/MenuItems/5
+        // PUT: api/OrderItems/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMenuItem(int id, MenuItem menuItem)
+        public IHttpActionResult PutOrderItem(int id, OrderItem orderItem)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != menuItem.Id)
+            if (id != orderItem.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(menuItem).State = EntityState.Modified;
+            db.Entry(orderItem).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace FoodService.Controllers.api
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MenuItemExists(id))
+                if (!OrderItemExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace FoodService.Controllers.api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/MenuItems
-        [ResponseType(typeof(MenuItem))]
-        public IHttpActionResult PostMenuItem(MenuItem menuItem)
+        // POST: api/OrderItems
+        [ResponseType(typeof(OrderItem))]
+        public IHttpActionResult PostOrderItem(OrderItem orderItem)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.MenuItems.Add(menuItem);
+            db.OrdersItems.Add(orderItem);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = menuItem.Id }, menuItem);
+            return CreatedAtRoute("DefaultApi", new { id = orderItem.Id }, orderItem);
         }
 
-        // DELETE: api/MenuItems/5
-        [ResponseType(typeof(MenuItem))]
-        public IHttpActionResult DeleteMenuItem(int id)
+        // DELETE: api/OrderItems/5
+        [ResponseType(typeof(OrderItem))]
+        public IHttpActionResult DeleteOrderItem(int id)
         {
-            MenuItem menuItem = db.MenuItems.Find(id);
-            if (menuItem == null)
+            OrderItem orderItem = db.OrdersItems.Find(id);
+            if (orderItem == null)
             {
                 return NotFound();
             }
 
-            db.MenuItems.Remove(menuItem);
+            db.OrdersItems.Remove(orderItem);
             db.SaveChanges();
 
-            return Ok(menuItem);
+            return Ok(orderItem);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace FoodService.Controllers.api
             base.Dispose(disposing);
         }
 
-        private bool MenuItemExists(int id)
+        private bool OrderItemExists(int id)
         {
-            return db.MenuItems.Count(e => e.Id == id) > 0;
+            return db.OrdersItems.Count(e => e.Id == id) > 0;
         }
     }
 }

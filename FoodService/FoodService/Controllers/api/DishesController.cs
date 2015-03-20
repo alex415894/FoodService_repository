@@ -19,7 +19,8 @@ namespace FoodService.Controllers.api
         // GET: api/Dishes
         public IQueryable<Dish> GetDishes()
         {
-            return db.Dishes;
+            MenuItem menu = db.MenuItems.Find(1);
+              return db.Dishes;
         }
 
         // GET: api/Dishes/5

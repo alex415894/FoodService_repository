@@ -165,8 +165,9 @@ C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.csprojResolveAssemblyReference.cache
-C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.InitialCreate.resources
-C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.Initial.resources
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.csproj.GenerateResource.Cache
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.dll
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.pdb
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test.resources
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test2.resources
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test3.resources

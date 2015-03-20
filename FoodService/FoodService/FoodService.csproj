@@ -169,19 +169,28 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\api\DishesController.cs" />
+    <Compile Include="Controllers\api\DishesController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\api\MenuItemsController.cs" />
+    <Compile Include="Controllers\api\OrderItemsController.cs" />
+    <Compile Include="Controllers\api\OrdersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503141430200_InitialCreate.cs" />
-    <Compile Include="Migrations\201503141430200_InitialCreate.Designer.cs">
-      <DependentUpon>201503141430200_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201503192322044_test.cs" />
+    <Compile Include="Migrations\201503192322044_test.Designer.cs">
+      <DependentUpon>201503192322044_test.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201503142118038_Initial.cs" />
-    <Compile Include="Migrations\201503142118038_Initial.Designer.cs">
-      <DependentUpon>201503142118038_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201503192342314_test2.cs" />
+    <Compile Include="Migrations\201503192342314_test2.Designer.cs">
+      <DependentUpon>201503192342314_test2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201503200732514_test3.cs" />
+    <Compile Include="Migrations\201503200732514_test3.Designer.cs">
+      <DependentUpon>201503200732514_test3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -263,11 +272,14 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201503141430200_InitialCreate.resx">
-      <DependentUpon>201503141430200_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503192322044_test.resx">
+      <DependentUpon>201503192322044_test.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201503142118038_Initial.resx">
-      <DependentUpon>201503142118038_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201503192342314_test2.resx">
+      <DependentUpon>201503192342314_test2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201503200732514_test3.resx">
+      <DependentUpon>201503200732514_test3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

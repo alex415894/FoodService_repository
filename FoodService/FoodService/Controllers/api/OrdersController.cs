@@ -12,44 +12,44 @@ using FoodService.Models;
 
 namespace FoodService.Controllers.api
 {
-    public class MenuItemsController : ApiController
+    public class OrdersController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/MenuItems
-        public IQueryable<MenuItem> GetMenuItems()
+        // GET: api/Orders
+        public IQueryable<Order> GetOrders()
         {
-            return db.MenuItems;
+            return db.Orders;
         }
 
-        // GET: api/MenuItems/5
-        [ResponseType(typeof(MenuItem))]
-        public IHttpActionResult GetMenuItem(int id)
+        // GET: api/Orders/5
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult GetOrder(int id)
         {
-            MenuItem menuItem = db.MenuItems.Find(id);
-            if (menuItem == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            return Ok(menuItem);
+            return Ok(order);
         }
 
-        // PUT: api/MenuItems/5
+        // PUT: api/Orders/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutMenuItem(int id, MenuItem menuItem)
+        public IHttpActionResult PutOrder(int id, Order order)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != menuItem.Id)
+            if (id != order.Id)
             {
                 return BadRequest();
             }
 
-            db.Entry(menuItem).State = EntityState.Modified;
+            db.Entry(order).State = EntityState.Modified;
 
             try
             {
@@ -57,7 +57,7 @@ namespace FoodService.Controllers.api
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!MenuItemExists(id))
+                if (!OrderExists(id))
                 {
                     return NotFound();
                 }
@@ -70,35 +70,35 @@ namespace FoodService.Controllers.api
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/MenuItems
-        [ResponseType(typeof(MenuItem))]
-        public IHttpActionResult PostMenuItem(MenuItem menuItem)
+        // POST: api/Orders
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult PostOrder(Order order)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.MenuItems.Add(menuItem);
+            db.Orders.Add(order);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = menuItem.Id }, menuItem);
+            return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
         }
 
-        // DELETE: api/MenuItems/5
-        [ResponseType(typeof(MenuItem))]
-        public IHttpActionResult DeleteMenuItem(int id)
+        // DELETE: api/Orders/5
+        [ResponseType(typeof(Order))]
+        public IHttpActionResult DeleteOrder(int id)
         {
-            MenuItem menuItem = db.MenuItems.Find(id);
-            if (menuItem == null)
+            Order order = db.Orders.Find(id);
+            if (order == null)
             {
                 return NotFound();
             }
 
-            db.MenuItems.Remove(menuItem);
+            db.Orders.Remove(order);
             db.SaveChanges();
 
-            return Ok(menuItem);
+            return Ok(order);
         }
 
         protected override void Dispose(bool disposing)
@@ -110,9 +110,9 @@ namespace FoodService.Controllers.api
             base.Dispose(disposing);
         }
 
-        private bool MenuItemExists(int id)
+        private bool OrderExists(int id)
         {
-            return db.MenuItems.Count(e => e.Id == id) > 0;
+            return db.Orders.Count(e => e.Id == id) > 0;
         }
     }
 }

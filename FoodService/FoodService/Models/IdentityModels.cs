@@ -20,8 +20,7 @@ namespace FoodService.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+        public ApplicationDbContext() : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 
@@ -31,7 +30,8 @@ namespace FoodService.Models
         }
 
         public System.Data.Entity.DbSet<FoodService.Models.Dish> Dishes { get; set; }
-
         public System.Data.Entity.DbSet<FoodService.Models.MenuItem> MenuItems { get; set; }
+        public System.Data.Entity.DbSet<FoodService.Models.Order> Orders { get; set; }
+        public System.Data.Entity.DbSet<FoodService.Models.OrderItem> OrdersItems { get; set; }
     }
 }
