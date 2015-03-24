@@ -1,0 +1,177 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="page-header">
+    <h1> Food Service </h1>
+</div>
+
+<div id="tableBlock"></div>
+<div id="editBlock">
+    <p><b>Редактирование блюда</b></p>
+    <table>
+        <tr><td><input type="hidden" id="editId" /></td><td></td></tr>
+        <tr><td><label>Название: </label></td><td><input type="text" id="editName" /></td></tr>
+        <tr><td><label>Цена </label></td><td><input type="text" id="editPrice" /></td></tr>
+
+    </table>
+    <button id="editDich">Сохранить</button>
+</div>
+<div id="createBlock">
+    <p><b>Добавление блюда</b></p>
+    <table>
+        <tr><td><label>Название: </label></td><td><input type="text" id="addName" /></td></tr>
+        <tr><td><label>Цена: </label></td><td><input type="text" id="addPrice" /></td></tr>
+
+    </table>
+    <button id="addDish">Сохранить</button>
+</div>
+@section scripts
+{
+    <script type="text/javascript">
+    $(document).ready(function () {
+
+        GetAllDishes();
+
+        $("#editDish").click(function (event) {
+            event.preventDefault();
+            EditDish();
+        });
+
+        $("#addDish").click(function (event) {
+            event.preventDefault();
+            AddDish();
+        });
+
+    });
+    // Получение всех блюд по ajax-запросу
+    function GetAllDishes() {
+
+        $("#createBlock").css('display', 'block');
+        $("#editBlock").css('display', 'none');
+        $.ajax({
+            url: '/api/Dishes',
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                WriteResponse(data);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+ // Добавление нового блюда
+    function AddDish() {
+        // получаем значения для добавляемого блюда
+        var dish = {
+            Name: $('#addName').val(),
+            Price: $('#addPrice').val(),
+
+        };
+
+        $.ajax({
+            url: '/api/Dishes/',
+            type: 'POST',
+            data: JSON.stringify(dish),
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                GetAllDishes();
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+ // Удаление блюда
+    function DeleteDish(id) {
+
+        $.ajax({
+            url: '/api/Dishes/' + id,
+            type: 'DELETE',
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                GetAllDishes();
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+    // редактирование блюда
+    function EditDish() {
+        var id = $('#editId').val()
+        // получаем новые значения для редактируемого блюда
+        var dish = {
+            Id: $('#editId').val(),
+            Name: $('#editName').val(),
+            Price: $('#editPrice').val(),
+
+        };
+        $.ajax({
+            url: '/api/Dishes/' + id,
+            type: 'PUT',
+            data: JSON.stringify(dish),
+            contentType: "application/json;charset=utf-8",
+            success: function (data) {
+                GetAllDishes();
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+ // вывод полученных данных на экран
+    function WriteResponse(dishes) {
+        var strResult = "<table><th>№</th><th>Название</th><th>Стоимость</th>";
+        $.each(dishes, function (index, dish) {
+            strResult += "<tr><td>" + dish.Id + "</td><td> " + dish.Name + "</td><td>" +
+            dish.Price + "</td><td><a id='editItem' data-item='" + dish.Id + "' onclick='EditItem(this);' >Редактировать</a></td>" +
+            "<td><a id='delItem' data-item='" + dish.Id + "' onclick='DeleteItem(this);' >Удалить</a></td></tr>";
+        });
+        strResult += "</table>";
+        $("#tableBlock").html(strResult);
+
+    }
+    // обработчик удаления
+    function DeleteItem(el) {
+        // получаем id удаляемого объекта
+        var id = $(el).attr('data-item');
+        DeleteDish(id);
+    }
+    // обработчик редактирования
+    function EditItem (el) {
+        // получаем id редактируемого объекта
+        var id = $(el).attr('data-item');
+        GetDish(id);
+    }
+    // вывод данных редактируемой блюда в поля для редактирования
+    function ShowDish(dish) {
+        if (dish != null) {
+            $("#createBlock").css('display', 'none');
+            $("#editBlock").css('display', 'block');
+            $("#editId").val(dish.Id);
+            $("#editName").val(dish.Name);
+            $("#editPrice").val(dish.Price);
+
+        }
+        else {
+            alert("Такого блюда не существует");
+        }
+    }
+    // запрос блюда на редактирование
+    function GetDish(id) {
+        $.ajax({
+            url: '/api/Dishes/' + id,
+            type: 'GET',
+            dataType: 'json',
+            success: function (data) {
+                ShowDish(data);
+            },
+            error: function (x, y, z) {
+                alert(x + '\n' + y + '\n' + z);
+            }
+        });
+    }
+    </script>
+}

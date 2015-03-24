@@ -38,6 +38,7 @@ namespace FoodService.Controllers.api
 
         // PUT: api/Dishes/5
         [ResponseType(typeof(void))]
+        [Authorize(Roles = "admin")]
         public IHttpActionResult PutDish(int id, Dish dish)
         {
             if (!ModelState.IsValid)
