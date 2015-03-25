@@ -11,44 +11,44 @@
             <div class="row">
                 <div class="col-sm-10 col-sm-offset-1"><h2 class="text-center">Dishes for week</h2></div>
                 <div class="row">
-                    <div class="col-sm-2 bg-success col-sm-offset-1"><h2>Monday</h2></div>
-                    <div class="col-sm-2 bg-success"><h2>Tuesday</h2></div>
-                    <div class="col-sm-2 bg-success"><h2>Wednesday</h2></div>
-                    <div class="col-sm-2 bg-success"><h2>Thursday</h2></div>
-                    <div class="col-sm-2 bg-success"><h2>Friday</h2></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-2 col-sm-offset-1"><h3>"1"</h3></div>
-                    <div class="col-sm-2 bg-warning"><h3>"2"</h3></div>
-                    <div class="col-sm-2"><h3>"3"</h3></div>
-                    <div class="col-sm-2 bg-warning"><h3>"4"</h3></div>
-                    <div class="col-sm-2"><h3>"5"</h3></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-10 bg-success col-sm-offset-1"><h2 class="text-center">All dishes</h2></div>
-                </div>
-                <div class="row">
-                    <div class="col-sm-10 col-sm-offset-1 bg-warning">
-                        <h3>"My text All dishes"</h3>
-                        <table class="table table-striped ">
-                            <thead>
-                                <tr>
-                                    <th>Предмет</th>
-                                    <th>Цена</th>
-
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="item in list.items">
-                                    <td>{{item.name}}</td>
-                                    <td>{{item.price}}</td>
-
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="col-sm-2 bg-success col-sm-offset-1"><h2>Monday</h2></div>
+                        <div class="col-sm-2 bg-success"><h2>Tuesday</h2></div>
+                        <div class="col-sm-2 bg-success"><h2>Wednesday</h2></div>
+                        <div class="col-sm-2 bg-success"><h2>Thursday</h2></div>
+                        <div class="col-sm-2 bg-success"><h2>Friday</h2></div>
                     </div>
-                </div>
-                @*<div class="col-sm-offset-1">
+                    <div class="row">
+                        <div class="col-sm-2 col-sm-offset-1"><h3>"1"</h3></div>
+                        <div class="col-sm-2 bg-warning"><h3>"2"</h3></div>
+                        <div class="col-sm-2"><h3>"3"</h3></div>
+                        <div class="col-sm-2 bg-warning"><h3>"4"</h3></div>
+                        <div class="col-sm-2"><h3>"5"</h3></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-10 bg-success col-sm-offset-1"><h2 class="text-center">All dishes</h2></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-10 col-sm-offset-1 bg-warning">
+                            <h3>"My text All dishes"</h3>
+                            <table class="table table-striped ">
+                                <thead>
+                                    <tr>
+                                        <th>Предмет</th>
+                                        <th>Цена</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in list.items">
+                                        <td>{{item.name}}</td>
+                                        <td>{{item.price}}</td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    @*<div class="col-sm-offset-1">
                         <button type="button" class="btn btn-default">Стандартная</button>
                         <button type="button" class="btn btn-primary">Основная</button>
                         <button type="button" class="btn btn-success">Подтвердить</button>
@@ -57,27 +57,27 @@
                         <button type="button" class="btn btn-danger">Отмена</button>
                         <button type="button" class="btn btn-link">Ссылка</button>
                     </div>*@
-            </div>
-        </div>
-        <br />
-        <div class="form-inline">
-            <div class="form-group">
-                <div class="col-md-8">
-                    <input class="form-control" ng-model="text" placeholder="Название" />
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-6">
-                    <input type="number" class="form-control" ng-model="price" placeholder="Цена" />
+            <br />
+            <div class="form-inline">
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <input class="form-control" ng-model="text" placeholder="Название" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-6">
+                        <input type="number" class="form-control" ng-model="price" placeholder="Цена" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-12 col-md-18">
+                        <button class="btn btn-default" ng-click="addItem(text, price)">Добавить</button>
+                    </div>
                 </div>
             </div>
-            <div class="form-group">
-                <div class="col-md-offset-12 col-md-18">
-                    <button class="btn btn-default" ng-click="addItem(text, price)">Добавить</button>
-                </div>
-            </div>
-        </div>
-    </div>
+        
 
             <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.11/angular.min.js"></script>
             <script>
@@ -94,7 +94,7 @@
                 purchaseApp.controller("purchaseController", function ($scope) {
                     $scope.list = model;
                     $scope.addItem = function (text, price) {
-                        $scope.list.items.push({ purchase: text, price: price});
+                        $scope.list.items.push({ purchase: text, price: price, done: false });
                     }
                 });
             </script>

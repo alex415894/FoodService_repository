@@ -17,18 +17,16 @@ namespace FoodService.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Admin()
         {
-            
+            //ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
 
-        [Authorize]
-        public ActionResult Profile()
+        [Authorize(Roles = "admin")]
+        public ActionResult TestAdmin()
         {
-            ViewBag.Message = User.Identity.Name;
-            ViewBag.Message2 = User.Identity.AuthenticationType;
-            ViewBag.Message3 = User.Identity.IsAuthenticated;
+            
             return View();
         }
     }

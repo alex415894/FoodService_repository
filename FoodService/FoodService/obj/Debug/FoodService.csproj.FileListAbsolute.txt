@@ -171,5 +171,3 @@ C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test.resources
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test2.resources
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test3.resources
-C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test7.resources
-C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test8.resources

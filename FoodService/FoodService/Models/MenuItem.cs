@@ -12,7 +12,7 @@ namespace FoodService.Models
         public DateTime Date { get; set; }
       
         [ForeignKey("Dish")] 
-        public int Dish_Id  { get; set; }
+        public virtual int Dish_Id  { get; set; }
 
         public virtual Dish Dish { get; set; }
 
