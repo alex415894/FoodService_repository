@@ -20,7 +20,7 @@ namespace FoodService.Models
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public IEnumerable<Dish> GetDishes()
+        public IEnumerable<Dish> GetDishList()
         {
             return db.Dishes;
         }

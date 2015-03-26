@@ -22,13 +22,6 @@ namespace FoodService.Controllers.api
         }
         //DishRepository _repository = new DishRepository();
 
-        /*  IEnumerable<Dish> GetDishList();
-            Dish GetDish(int id);
-            void Add(Dish dish);
-            void Update(Dish dish);
-            void Delete(int id);
-            void Save(); */
-
         public IEnumerable<Dish> Get()
         {
             return _repository.GetDishList();
