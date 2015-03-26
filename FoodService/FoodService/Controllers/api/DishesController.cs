@@ -14,20 +14,31 @@ namespace FoodService.Controllers.api
 {
     public class DishesController : ApiController
     {
-        private ApplicationDbContext db = new ApplicationDbContext();
+        private IDishRepository _repository;
 
-        // GET: api/Dishes
-        public IQueryable<Dish> GetDishes()
+        public DishesController(IDishRepository repository)  
         {
-            MenuItem menu = db.MenuItems.Find(1);
-              return db.Dishes;
+        _repository = repository;
         }
+        //DishRepository _repository = new DishRepository();
 
+        /*  IEnumerable<Dish> GetDishList();
+            Dish GetDish(int id);
+            void Add(Dish dish);
+            void Update(Dish dish);
+            void Delete(int id);
+            void Save(); */
+
+        public IEnumerable<Dish> Get()
+        {
+            return _repository.GetDishList();
+        }
+      
         // GET: api/Dishes/5
         [ResponseType(typeof(Dish))]
         public IHttpActionResult GetDish(int id)
         {
-            Dish dish = db.Dishes.Find(id);
+            Dish dish = _repository.GetDish(id);
             if (dish == null)
             {
                 return NotFound();
@@ -41,34 +52,20 @@ namespace FoodService.Controllers.api
         [Authorize(Roles = "admin")]
         public IHttpActionResult PutDish(int id, Dish dish)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            if (!ModelState.IsValid) {return BadRequest(ModelState);}
+            if (id != dish.Id)       {return BadRequest();          }
 
-            if (id != dish.Id)
-            {
-                return BadRequest();
-            }
-
-            db.Entry(dish).State = EntityState.Modified;
+            _repository.Update(dish);
 
             try
             {
-                db.SaveChanges();
+                _repository.Save();
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!DishExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
+                if (!DishExists(id)) { return NotFound();}
+                else                 { throw;            }
             }
-
             return StatusCode(HttpStatusCode.NoContent);
         }
 
@@ -82,8 +79,8 @@ namespace FoodService.Controllers.api
                 return BadRequest(ModelState);
             }
 
-            db.Dishes.Add(dish);
-            db.SaveChanges();
+            _repository.Add(dish);
+            _repository.Save();
 
             return CreatedAtRoute("DefaultApi", new { id = dish.Id }, dish);
         }
@@ -93,30 +90,16 @@ namespace FoodService.Controllers.api
         [Authorize(Roles = "admin")]
         public IHttpActionResult DeleteDish(int id)
         {
-            Dish dish = db.Dishes.Find(id);
-            if (dish == null)
-            {
-                return NotFound();
-            }
+            _repository.Delete(id);
+            _repository.Save();
 
-            db.Dishes.Remove(dish);
-            db.SaveChanges();
-
-            return Ok(dish);
+            return Ok();
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
 
         private bool DishExists(int id)
         {
-            return db.Dishes.Count(e => e.Id == id) > 0;
+            return _repository.GetDishList().Count(e => e.Id == id) > 0;
         }
     }
 }

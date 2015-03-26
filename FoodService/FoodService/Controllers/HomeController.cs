@@ -24,7 +24,7 @@ namespace FoodService.Controllers
 
 
         [Authorize(Roles = "admin")]
-        public ActionResult TestAdmin()
+        public ActionResult UserData()
         {
             
             return View();
