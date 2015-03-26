@@ -13,8 +13,9 @@ namespace FoodService
         {
             var container = new UnityContainer();
             container.RegisterType<IDishRepository, DishRepository>(new HierarchicalLifetimeManager());
+            
             config.DependencyResolver = new UnityResolver(container);
-
+          
             // Конфигурация и службы веб-API
 
             // Маршруты веб-API

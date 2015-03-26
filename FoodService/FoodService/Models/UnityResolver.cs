@@ -7,19 +7,7 @@ using System.Web.Http.Dependencies;
 using FoodService.Models;
 
 namespace FoodService.Models
-{
-    //TODO: remove this, You should use Web.Api interfaces
-    /*public interface IDependencyScope : IDisposable
-    {
-        object GetService(Type serviceType);
-        IEnumerable<object> GetServices(Type serviceType);
-    }
-
-    public interface IDependencyResolver : IDependencyScope, IDisposable
-    {
-        IDependencyScope BeginScope();
-    }*/
-    
+{      
     public class UnityResolver : IDependencyResolver
     {
         protected IUnityContainer container;

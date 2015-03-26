@@ -128,3 +128,5 @@ C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService.Tests\obj\Debug\FoodService.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService.Tests\obj\Debug\FoodService.Tests.dll
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService.Tests\obj\Debug\FoodService.Tests.pdb
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService.Tests\bin\Debug\Microsoft.Practices.Unity.dll
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService.Tests\bin\Debug\Microsoft.Practices.Unity.xml

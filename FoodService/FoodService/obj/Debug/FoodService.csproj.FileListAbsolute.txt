@@ -171,3 +171,9 @@ C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test.resources
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test2.resources
 C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\obj\Debug\FoodService.Migrations.test3.resources
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\bin\Microsoft.Practices.Unity.Configuration.dll
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\bin\Microsoft.Practices.Unity.dll
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\bin\Microsoft.Practices.Unity.RegistrationByConvention.dll
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\bin\Microsoft.Practices.Unity.xml
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\bin\Microsoft.Practices.Unity.Configuration.xml
+C:\Users\Александр\Documents\GitHub\FoodService_repository\FoodService\FoodService\bin\Microsoft.Practices.Unity.RegistrationByConvention.xml

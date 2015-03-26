@@ -45,7 +45,7 @@ namespace FoodService.Tests.Controllers
             HomeController controller = new HomeController();
 
             // Act
-            ViewResult result = controller.TestAdmin() as ViewResult;
+            ViewResult result = controller.UserData() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);
