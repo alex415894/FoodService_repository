@@ -8,7 +8,8 @@ using FoodService.Models;
 
 namespace FoodService.Models
 {
-    public interface IDependencyScope : IDisposable
+    //TODO: remove this, You should use Web.Api interfaces
+    /*public interface IDependencyScope : IDisposable
     {
         object GetService(Type serviceType);
         IEnumerable<object> GetServices(Type serviceType);
@@ -17,7 +18,7 @@ namespace FoodService.Models
     public interface IDependencyResolver : IDependencyScope, IDisposable
     {
         IDependencyScope BeginScope();
-    }
+    }*/
     
     public class UnityResolver : IDependencyResolver
     {
