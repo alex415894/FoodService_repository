@@ -9,13 +9,22 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using FoodService.Models;
+using System.Threading;
+using Microsoft.AspNet.Identity;
 
 namespace FoodService.Controllers.api
 {
+    [Authorize] 
     public class OrdersController : ApiController
     {
+        //Get list for day for user
+        //Get list for period for user
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
+       // var userId = User.Identity.GetUserId();
+      //  Order order = db.Orders.Single()(p => p.UserId == userId);
+       
         // GET: api/Orders
         public IQueryable<Order> GetOrders()
         {

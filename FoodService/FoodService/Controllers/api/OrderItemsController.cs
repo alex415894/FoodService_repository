@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FoodService.Models;
+using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -6,20 +8,30 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Web.Http;
 using System.Web.Http.Description;
-using FoodService.Models;
+
 
 namespace FoodService.Controllers.api
 {
     public class OrderItemsController : ApiController
-    {
+    {  
+        //Get list for order
+
+        //Add
+        //Remove
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/OrderItems
         public IQueryable<OrderItem> GetOrdersItems()
         {
-            return db.OrdersItems;
+            var userId = User.Identity.GetUserId();
+            var order = db.Orders.Single(p => p.UserId == userId);
+            return db.OrdersItems
+                .Where(p => p.OrderId == order.Id);
+               
         }
 
         // GET: api/OrderItems/5

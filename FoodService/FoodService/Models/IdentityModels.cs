@@ -33,5 +33,6 @@ namespace FoodService.Models
         public System.Data.Entity.DbSet<FoodService.Models.MenuItem> MenuItems { get; set; }
         public System.Data.Entity.DbSet<FoodService.Models.Order> Orders { get; set; }
         public System.Data.Entity.DbSet<FoodService.Models.OrderItem> OrdersItems { get; set; }
+       // public System.Data.Entity.DbSet<FoodService.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

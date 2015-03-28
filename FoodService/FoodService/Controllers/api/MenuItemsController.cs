@@ -13,7 +13,12 @@ using FoodService.Models;
 namespace FoodService.Controllers.api
 {
     public class MenuItemsController : ApiController
-    {
+    {   
+        //Get list for date
+        //Add
+        //Remove
+         
+
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/MenuItems
