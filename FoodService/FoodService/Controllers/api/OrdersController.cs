@@ -81,17 +81,19 @@ namespace FoodService.Controllers.api
 
         // POST: api/Orders
         [ResponseType(typeof(Order))]
-        public IHttpActionResult PostOrder(Order order)
+        public IHttpActionResult PostOrder(int id, DateTime date)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-
-            db.Orders.Add(order);
+            var userId = User.Identity.GetUserId();
+            db.Orders.Add(new Order { Id = id, Date = date, UserId = userId });
+            
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = order.Id }, order);
+            return CreatedAtRoute("DefaultApi", new { id = id }, new { id = id, date = date, userId = userId });
+                //CreatedAtRoute("DefaultApi", new { id = orders.Id }, order);
         }
 
         // DELETE: api/Orders/5

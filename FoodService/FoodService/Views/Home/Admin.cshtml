@@ -93,8 +93,8 @@
                 var purchaseApp = angular.module("purchaseApp", []);
                 purchaseApp.controller("purchaseController", function ($scope) {
                     $scope.list = model;
-                    $scope.addItem = function (index, dish) {
-                        $scope.list.items.push({ purchase: dish.Name, price: dish.Price });
+                    $scope.addItem = function (text, price) {
+                        $scope.list.items.push({ purchase: text, price: price, done: false });
                     }
                 });
             </script>
