@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-<body ng-controller="purchaseController">
+<body ng-controller="dish_listController">
     <div class="page-header">
         <h1> Food Service </h1>
     </div>
@@ -39,9 +39,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in list.items">
-                                    <td>{{item.name}}</td>
-                                    <td>{{item.price}}</td>
+                                <tr ng-repeat="itemDish in getDishList.items">
+                                    <td>{{itemDish.name}}</td>
+                                    <td>{{itemDish.price}}</td>
 
                                 </tr>
                             </tbody>
@@ -90,13 +90,15 @@
                         { name: "Сыр", price: 310 }
                     ]
                 };
-                var purchaseApp = angular.module("purchaseApp", []);
-                purchaseApp.controller("purchaseController", function ($scope) {
-                    $scope.list = model;
+                var dishApp = angular.module("foodServiceApp", []);
+                dishApp.controller("dish_listController", function ($scope) {
+                    $scope.getDishList = model;
                     $scope.addItem = function (text, price) {
-                        $scope.list.items.push({ purchase: text, price: price, done: false });
+                        $scope.getDishList.items.push({ purchase: text, price: price, done: false });
                     }
                 });
+
+
             </script>
 </body>
 
@@ -151,8 +153,9 @@
             success: function (data) {
                 WriteResponse(data);
             },
+
             error: function (x, y, z) {
-                alert(x + '\n' + y + '\n' + z);
+                alert(x + '\n' + y + '\n' + z + "Ошибка");
             }
         });
     }
@@ -219,7 +222,7 @@
  // вывод полученных данных на экран
     function WriteResponse(dishes) {
         var strResult = "<div class=\"col-sm-4 col-sm-offset-1 bg-warning\">" + "<table table table-striped ><th>№</th><th>Name</th><th>Price</th>";
-        $.each(dishes, function (index, dish) {
+          (dishes, function (index, dish) {
             strResult += "<tr><td>" + dish.Id + "&nbsp" + "</td><td> " + dish.Name + "&nbsp" + "</td><td>" +
             dish.Price + "</td><td><a id='editItem' data-item='" + dish.Id + "' onclick='EditItem(this);' > &nbsp Edit  </a></td>" +
             "<td><a id='delItem' data-item='" + dish.Id + "' onclick='DeleteItem(this);' > &nbsp  Delete  </a></td></tr>";
