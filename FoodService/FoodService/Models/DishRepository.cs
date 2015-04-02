@@ -14,6 +14,7 @@ namespace FoodService.Models
         void Update(Dish dish);
         void Delete(int id);
         void Save();
+        bool DishExists(int id);
     }
     
     public class DishRepository : IDishRepository // :IDisposable
@@ -53,6 +54,11 @@ namespace FoodService.Models
 
         private bool disposed = false;
 
+        public bool DishExists(int id)
+        {
+            return db.Dishes.Count(e => e.Id == id) > 0;
+        }
+
         public virtual void Dispose(bool disposing)
         {
             if (!this.disposed)
@@ -65,6 +71,7 @@ namespace FoodService.Models
             this.disposed = true;
         }
 
+        
         public void Dispose()
         {
             Dispose(true);

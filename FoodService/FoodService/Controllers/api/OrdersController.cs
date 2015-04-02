@@ -14,7 +14,7 @@ using Microsoft.AspNet.Identity;
 
 namespace FoodService.Controllers.api
 {
-    [Authorize] 
+    [Authorize]
     public class OrdersController : ApiController
     {
         //Get list for day for user
@@ -22,9 +22,9 @@ namespace FoodService.Controllers.api
 
         private ApplicationDbContext db = new ApplicationDbContext();
 
-       // var userId = User.Identity.GetUserId();
-      //  Order order = db.Orders.Single()(p => p.UserId == userId);
-       
+        // var userId = User.Identity.GetUserId();
+        //  Order order = db.Orders.Single()(p => p.UserId == userId);
+
         // GET: api/Orders
         public IQueryable<Order> GetOrders()
         {
@@ -89,11 +89,11 @@ namespace FoodService.Controllers.api
             }
             var userId = User.Identity.GetUserId();
             db.Orders.Add(new Order { Id = id, Date = date, UserId = userId });
-            
+
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = id }, new { id = id, date = date, userId = userId });
-                //CreatedAtRoute("DefaultApi", new { id = orders.Id }, order);
+            //CreatedAtRoute("DefaultApi", new { id = orders.Id }, order);
         }
 
         // DELETE: api/Orders/5

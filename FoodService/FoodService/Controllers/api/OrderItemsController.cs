@@ -16,7 +16,7 @@ using System.Web.Http.Description;
 namespace FoodService.Controllers.api
 {
     public class OrderItemsController : ApiController
-    {  
+    {
         //Get list for order
 
         //Add
@@ -31,7 +31,7 @@ namespace FoodService.Controllers.api
             var order = db.Orders.Single(p => p.UserId == userId);
             return db.OrdersItems
                 .Where(p => p.OrderId == order.Id);
-               
+
         }
 
         // GET: api/OrderItems/5

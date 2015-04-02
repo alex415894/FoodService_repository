@@ -92,7 +92,7 @@ namespace FoodService.Controllers.api
 
         private bool DishExists(int id)
         {
-            return _repository.GetDishList().Count(e => e.Id == id) > 0;
+            return _repository.DishExists(id);
         }
     }
 }
